@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>500fd77a-51f6-405c-b390-902a2c524add</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="6.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.5" />
+    <PackageReference Include="PagedList.Core.Mvc" Version="3.0.0" />
+    <PackageReference Include="PayPal" Version="1.9.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="wwwroot\images\categories\" />
+    <Folder Include="wwwroot\images\users\" />
+    <Folder Include="wwwroot\images\pages\" />
+    <Folder Include="wwwroot\Userassets\images\supplier\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+</Project>

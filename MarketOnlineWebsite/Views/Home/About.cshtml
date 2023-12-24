@@ -1,0 +1,208 @@
+﻿@model MarketOnlineWebsite.Models.Supplier
+@{
+    ViewData["Title"] = "Về chúng tôi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Supplier> suppliers = ViewBag.LsSuppliers;
+}
+@*<img src= "~/Userassets/images/about/intro/icon/2-1.jpg" width= "970" height="224"/>*@
+<!-- Begin Main Content Area -->
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" style="background-image:url('/images/imagesUserbg/1-1.jpg');">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h2 class="breadcrumb-heading">Giới thiệu</h2>
+                        <ul>
+                            <li>
+                                <a href="/">Trang chủ <i class="pe-7s-angle-right"></i></a>
+                            </li>
+                            <li>Giới thiệu</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="about-banner different-bg-position section-space-y-axis-100" style="background-image:url('/images/imagesUserbg/1-1About.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-5">
+                    <div class="parallax-img-wrap">
+                        <div class="papaya">
+                            <div class="scene fill">
+                                <div class="expand-width" data-depth="0.2">
+                                    <img src="~/Userassets/images/banner/inner-img/2-1.png" alt="Banner Images">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7 align-self-center">
+                    <div class="about-banner-content">
+                        <div class="section-title">
+                            <span class="sub-title">Chào mừng đến với Harmic</span>
+                            <h2 class="title font-size-60 mb-6">Best shop harmic </h2>
+                            <p class="short-desc mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimd veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                            <div class="button-wrap pt-8">
+                                <a class="btn btn-custom-size lg-size btn-primary btn-dark-hover rounded-0" href="shop.html">Mua hàng ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="intro-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="intro-item text-white" data-bg-color="#aec581">
+                        <div class="intro-icon mb-5">
+                            <img src="~/Userassets/images/about/intro/icon/1-1-170x165.png" alt="Intro Icon">
+                        </div>
+                        <div class="intro-content">
+                            <h3 class="title mb-4">Chúng tôi là ai</h3>
+                            <p class="short-desc mb-0">Lorem ipsum dolor sit amet consectet adipisicing elit, sed do eiusmo tempor incididunt ut labore</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
+                    <div class="intro-item text-white" data-bg-color="#b9cbe7">
+                        <div class="intro-icon mb-5">
+                            <img src="~/Userassets/images/about/intro/icon/1-1-170x165.png" alt="Intro Icon">
+                        </div>
+                        <div class="intro-content">
+                            <h3 class="title mb-4">Nguồn gốc sản phẩm</h3>
+                            <p class="short-desc mb-0">Lorem ipsum dolor sit amet consectet adipisicing elit, sed do eiusmo tempor incididunt ut labore</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
+                    <div class="intro-item text-white" data-bg-color="#b8a780">
+                        <div class="intro-icon mb-5">
+                            <img src="~/Userassets/images/about/intro/icon/1-1-170x165.png" alt="Intro Icon">
+                        </div>
+                        <div class="intro-content">
+                            <h3 class="title mb-4">Quy trình làm việc</h3>
+                            <p class="short-desc mb-0">Lorem ipsum dolor sit amet consectet adipisicing elit, sed do eiusmo tempor incididunt ut labore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="about-banner about-banner-height"  style="background-image:url('/images/imagesUserbg/1-1About.jpg');">
+        <div class="popup-btn">
+            <a class="popup-vimeo wave-btn" href="https://www.youtube.com/watch?v=opMsfLXZn74">
+                <span></span>
+                <span></span>
+                <span></span>
+                <div class="icon">
+                    <i class="fa fa-play"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="team-member section-space-top-100">
+        <div class="container">
+            <div class="section-title text-center pb-55">
+                <span class="sub-title text-primary">CUNG CẤP THỰC PHẨM SẠCH</span>
+                <h2 class="title mb-0">NHÀ CUNG CẤP SẢN PHẨM</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="swiper-container team-member-slider">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in suppliers)
+                            {
+                                 <div class="swiper-slide">
+                                    <div class="team-member-item">
+                                        <div class="team-member-img img-zoom-effect with-overlay">
+                                            <a href="javascript:void(0)">
+                                                <img class="img-full" src="/Userassets/images/supplier/@item.Logo" alt="Team Member" style="width:350px; height:370px;">
+                                            </a>
+                                        </div>
+                                        <div class="team-member-content text-black pt-5">
+                                            <h6 class="title mb-0">@item.Companyname</h6>
+                                            <span class="occupation">Nhà cung cấp</span>
+                                            <div class="social-link with-border justify-content-center pt-2">
+                                                <ul>
+                                                    <li>
+                                                        <a href="javascript:void(0)">
+                                                            <i class="fa fa-pinterest-p"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)">
+                                                            <i class="fa fa-twitter"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)">
+                                                            <i class="fa fa-tumblr"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)">
+                                                            <i class="fa fa-dribbble"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Main Content Area End Here -->
+
+<!-- Begin Shipping Area -->
+<div class="shipping-area section-space-y-axis-100">
+    <div class="container">
+       <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="shipping-item">
+                    <div class="shipping-img">
+                        <img src="~/Userassets/images/shipping/icon/plane.png" alt="Shipping Icon">
+                    </div>
+                    <div class="shipping-content">
+                        <h5 class="title">Miễn phí vận chuyển</h5>
+                        <p class="short-desc mb-0">Ưu đãi giao hàng tận nhà miễn phí</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
+                <div class="shipping-item">
+                    <div class="shipping-img">
+                        <img src="~/Userassets/images/shipping/icon/earphones.png" alt="Shipping Icon">
+                    </div>
+                    <div class="shipping-content">
+                        <h5 class="title">Hỗ trợ trực tuyến</h5>
+                        <p class="short-desc mb-0">Hỗ trợ trực tuyến 24/7</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
+                <div class="shipping-item">
+                    <div class="shipping-img">
+                        <img src="~/Userassets/images/shipping/icon/shield.png" alt="Shipping Icon">
+                    </div>
+                    <div class="shipping-content">
+                        <h5 class="title">Thanh toán an toàn</h5>
+                        <p class="short-desc mb-0">Hệ thống thanh toán an toàn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shipping Area End Here -->
+

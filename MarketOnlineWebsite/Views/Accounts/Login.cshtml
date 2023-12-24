@@ -1,0 +1,83 @@
+﻿@model MarketOnlineWebsite.ModelViews.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="Userassets/images/breadcrumb/bg/1-1.jpg">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h2 class="breadcrumb-heading">Đăng nhập tài khoản</h2>
+                        <ul>
+                            <li>
+                                <a href="/">Trang chủ <i class="pe-7s-angle-right"></i></a>
+                            </li>
+                            <li>Đăng nhập tài khoản </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="login-register-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 pt-10 pt-lg-0">
+                    <div class="login-form">
+                    <form method="post"  asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" >
+                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                          
+                            <h4 class="login-title">Đăng nhập tài khoản</h4>
+                            <div class="row">
+                               <div class="col-md-12">
+                                    <label>Tên đăng nhập*</label>
+                                    <input type="text" asp-for="UserName" placeholder="Địa chỉ emai">
+                                     <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Mật khẩu*</label>
+                                    <input type="password" asp-for="Password" placeholder="Mật khẩu">
+                                     <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Đăng nhập</button>
+                                </div>
+                    
+                    </form>
+                    <div class="col-6">
+                        <form asp-action="LoginGoogle">
+                            <button type="submit" class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Đăng nhập Gmail</button>
+                        </form>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#btnGmail").on("click", function () {
+                loginGoogle();
+            });
+        });
+
+        async function loginGoogle() {
+            await $.ajax({
+                url: "/AccountsController/LoginGoogle", // Thay thế "ControllerName" bằng tên của controller chứa hàm LoginGoogle
+                method: "POST", // Hoặc "GET" tùy thuộc vào cách bạn đã cấu hình định tuyến
+                success: function () {
+                    // Xử lý thành công nếu cần thiết
+                },
+                error: function () {
+                    // Xử lý lỗi nếu cần thiết
+                }
+            });
+        }
+    </script>
+}
+

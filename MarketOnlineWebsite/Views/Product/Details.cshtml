@@ -1,0 +1,323 @@
+﻿@using MarketOnlineWebsite.Models
+@model MarketOnlineWebsite.Models.Product
+@{
+    ViewData["Title"] = "Thông tin chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Product> lsProducts = ViewBag.Product;
+}
+<!-- Begin Main Content Area  -->
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="Userassets/images/breadcrumb/bg/1-1.jpg">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h1 class="breadcrumb-heading">@Model.ProductName</h1>
+                        <ul>
+                            <li>
+                                <a href="/">Trang chủ <i class="pe-7s-angle-right"></i></a>
+                            </li>
+                            <li>@Model.ProductName</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-product-area section-space-top-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="single-product-img h-100">
+                        <div class="swiper-container single-product-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="~/images/products/@Model.Thumb" class="single-img gallery-popup">
+                                        <img class="img-full" src="~/images/products/@Model.Thumb" alt="@Model.Title">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="~/images/products/@Model.Thumb" class="single-img gallery-popup">
+                                        <img class="img-full" src="~/images/products/@Model.Thumb" alt="Product Image">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="~/images/products/@Model.Thumb" class="single-img gallery-popup">
+                                        <img class="img-full" src="~/images/products/@Model.Thumb" alt="@Model.Title">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="~/images/products/@Model.Thumb" class="single-img gallery-popup">
+                                        <img class="img-full" src="~/images/products/@Model.Thumb" alt="@Model.Title">
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product-thumb-with-content row">
+                        <div class="col-12 order-lg-1 order-2 pt-10 pt-lg-0">
+                            <div class="single-product-content">
+                                <h2 class="title">@Model.ProductName</h2>
+                                <div class="price-box pb-1">
+                                    <span class="new-price text-danger">@Model.Price.Value.ToString("#,##0") VNĐ</span>
+                                    <span class="old-price text-primary">@Model.Price</span>
+                                </div>
+                                <div class="rating-box-wrap pb-7">
+                                    <div class="rating-box">
+                                        <ul>
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="short-desc mb-6">
+
+                                    @Model.ShortDesc
+                                </p>
+                                <ul class="quantity-with-btn pb-7">
+                                    <li class="quantity">
+                                        <div class="cart-plus-minus">
+                                            <input id="txtsoLuong" name="txtsoLuong" class="cart-plus-minus-box"
+                                                value="1" type="text">
+                                        </div>
+                                    </li>
+                                    <li class="add-to-cart">
+                                        <a
+                                            class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0">
+                                            Thêm vào giỏ hàng</a>
+                                        <input hidden asp-for="ProductId" />
+                                    </li>
+                                </ul>
+                                <div class="product-category text-matterhorn pb-2">
+                                    <span class="title">Danh mục:</span>
+                                    <ul>
+                                        <li>
+                                            <a href="/@Model.Cat.Alias">@Model.Cat.CatName</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 order-lg-2 order-1 pt-10 pt-lg-0">
+                            <div class="swiper-container single-product-thumbs">
+                                <div class="swiper-wrapper">
+                                    <a href="javascript:void(0)" class="swiper-slide">
+                                        <img class="img-full" src="~/images/products/@Model.Thumb"
+                                            alt="Product Thumnail">
+                                    </a>
+                                    <a href="javascript:void(0)" class="swiper-slide">
+                                        <img class="img-full" src="~/images/products/@Model.Thumb"
+                                            alt="Product Thumnail">
+                                    </a>
+                                    <a href="javascript:void(0)" class="swiper-slide">
+                                        <img class="img-full" src="~/images/products/@Model.Thumb"
+                                            alt="Product Thumnail">
+                                    </a>
+                                    <a href="javascript:void(0)" class="swiper-slide">
+                                        <img class="img-full" src="~/images/products/@Model.Thumb"
+                                            alt="Product Thumnail">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-tab-area section-space-top-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav product-tab-nav product-tab-style-2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="active btn btn-custom-size" id="description-tab" data-bs-toggle="tab"
+                                href="#description" role="tab" aria-controls="description" aria-selected="true">
+                                Mô tả sản phẩm
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="btn btn-custom-size" id="shipping-tab" data-bs-toggle="tab" href="#shipping"
+                                role="tab" aria-controls="shipping" aria-selected="false">
+                                Thông tin giao hàng
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content product-tab-content">
+                        <div class="tab-pane fade show active" id="description" role="tabpanel"
+                            aria-labelledby="description-tab">
+                            <div class="product-description-body">
+                                @Html.Raw(@Model.Description)
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                            <div class="product-shipping-body">
+                                <h4 class="title">ĐANG CHUYỂN HÀNG</h4>
+                                <p class="short-desc mb-4">
+                                    Mặt hàng sẽ được chuyển từ trụ sở. Vì vậy, nó cần 1-2 ngày để cung cấp.
+                                    Sản phẩm của chúng tôi là tốt với giá cả hợp lý và chúng tôi tin rằng bạn sẽ xứng
+                                    đáng với nó.
+                                    Vì vậy, hãy kiên nhẫn chờ đợi nó! Cảm ơn. Bất kỳ câu hỏi nào xin vui lòng liên hệ
+                                    với chúng tôi
+                                    và chúng tôi hứa sẽ làm việc chăm chỉ để giúp bạn giải quyết vấn đề
+                                </p>
+                                <h4 class="title">GIỚI THIỆU YÊU CẦU TRẢ LẠI</h4>
+                                <p class="short-desc mb-4">
+                                    Nếu bạn không cần mặt hàng với lo lắng, bạn có thể liên hệ với chúng tôi sau đó
+                                    chúng tôi sẽ giúp bạn giải quyết vấn đề,
+                                    vì vậy hãy đóng yêu cầu trả lại! Thanks
+                                </p>
+                                <h4 class="title">BẢO HÀNH</h4>
+                                <p class="short-desc mb-0">
+                                    Nếu đó là câu hỏi về chất lượng, chúng tôi sẽ gửi lại hoặc hoàn lại tiền cho bạn;
+                                    Nếu bạn nhận được hàng bị hư hỏng hoặc sai,
+                                    vui lòng liên hệ với chúng tôi và đính kèm một số hình ảnh về sản phẩm, chúng tôi sẽ
+                                    đổi một mặt hàng đúng mới cho bạn sau khi xác nhận..
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-slider-area section-space-top-95 section-space-bottom-100">
+        <div class="container">
+            <div class="section-title text-center pb-55">
+                <span class="sub-title text-primary">Có thể bạn cũng thích</span>
+                <h2 class="title mb-0">Sản phẩm tương tự</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="swiper-slider-holder swiper-arrow">
+                        <div class="swiper-container product-slider border-issue">
+                            <div class="swiper-wrapper">
+                                @if (lsProducts != null)
+                                {
+                                    foreach (var item in lsProducts)
+                                    {
+                                        string url = $"/{item.Alias}-{item.ProductId}.html";
+                                        <div class="swiper-slide">
+                                            <div class="product-item">
+                                                <div class="product-img img-zoom-effect">
+                                                    <a href="@url">
+                                                        <img class="img-full" src="~/images/products/@item.Thumb"
+                                                    alt="@item.Title">
+                                                    </a>
+                                                    <div class="product-add-action">
+                                                        <ul>
+                                                            <li>
+                                                                <a href="@url">
+                                                                    <i class="pe-7s-cart"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <i class="pe-7s-like"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content texx">
+                                                    <a class="product-name" href="@url">@item.ProductName </a>
+                                                    <div class="price-box pb-1">
+                                                        <span class="new-price">@item.Price.Value.ToString("#,##0") VNĐ</span>
+                                                    </div>
+                                                    <div class="rating-box">
+                                                        <ul>
+                                                            <li><i class="pe-7s-star"></i></li>
+                                                            <li><i class="pe-7s-star"></i></li>
+                                                            <li><i class="pe-7s-star"></i></li>
+                                                            <li><i class="pe-7s-star"></i></li>
+                                                            <li><i class="pe-7s-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Main Content Area End Here  -->
+@section Scripts
+{
+<script>
+    $(document).ready(function () {
+        $(function () {
+            $(".add-to-cart").click(function () {
+                var productID = $('#ProductId').val();
+                var amount = $('#txtsoLuong').val();
+                $.ajax({
+                    url: "/api/cart/add",
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {
+                        productID: productID,
+                        amount: amount
+                    },
+                    success: function (response) {
+                        loadHeaderCart();// Add Product success
+                        location.reload();
+                    },
+                    error: function (error) {
+                        alert("There was an error posting the data to the server: " + error.responseText);
+                    }
+                });
+            });
+        });
+        function loadHeaderCart() {
+            $("#miniCart").load("/AjaxContent/HeaderCart");
+            $("#numberCart").load("/AjaxContent/NumberCart");
+        }
+    });
+
+</script>
+<script>
+    $(function () {
+        function loadHeaderCart() {
+            $("#miniCart").load("/AjaxContent/HeaderCart");
+            $("#numbercard").load("/AjaxContent/NumberCart");
+        }
+        $(".removecart").click(function () {
+            var productid = $(this).attr("data-mahh");
+            $.ajax({
+                url: "api/cart/remove",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    productID: productid
+                },
+                success: function (result) {
+                    if (result.success) {
+                        loadHeaderCart();
+                        window.location = '';
+                    }
+                },
+                error: function (rs) {
+                    alert("Remove Cart Error !");
+                }
+            });
+        });
+    });
+</script>
+}

@@ -1,0 +1,153 @@
+﻿@model MarketOnlineWebsite.Models.Order
+
+@{
+    ViewData["Title"] = "Thông tin tiết đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    List<OrderDetail> orderDetails =  ViewBag.Detail;
+    string addressLocation = ViewBag.AddressLoaction;
+}
+<!-- Content Wrapper START -->
+<div class="main-content">
+    <div class="page-header">
+        <div class="header-sub-title">
+            <nav class="breadcrumb breadcrumb-dash">
+                <a  asp-area="Admin" asp-controller="AdminHome" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                  <a asp-area="Admin" asp-controller="AdminOrders" asp-action="Index" class="breadcrumb-item">Danh sách đơn hàng</a>
+                <span class="breadcrumb-item active">Chi tiết đơn hàng</span>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div id="invoice" class="p-h-30">
+                    <div class="m-t-15 lh-2">
+                        <div class="inline-block">
+                            <img class="img-fluid" src="~/Adminassets/images/logo/dark.png" alt="">
+                            <address class="p-l-10">
+                                <span class="font-weight-semibold text-dark">Harmic Online</span><br>
+                                <span>279 Nguyễn Tri Phương</span><br>
+                                <span>Thành phố Hồ Chí Minh </span><br>
+                                <abbr class="text-dark" title="Phone">Số điện thoại:</abbr>
+                                <span>(123) 456-7890</span>
+                            </address>
+                        </div>
+                        <div class="float-right">
+                            <h2>HÓA ĐƠN THANH TOÁN</h2>
+                        </div>
+                    </div>
+                    <div class="row m-t-20 lh-2">
+                        <div class="col-sm-9">
+                            <h3 class="p-l-10 m-t-10">THÔNG TIN HÓA ĐƠN:</h3>
+                            <address class="p-l-10 m-t-10">
+                                <span class="font-weight-semibold text-dark">@Model.Customer.FullName</span><br>
+                                <span>@Model.Address </span><br>
+                                <span>@addressLocation</span>
+                            </address>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="m-t-80">
+                                <div class="text-dark text-uppercase d-inline-block">
+                                    <span class="font-weight-semibold text-dark">Mã hoá đơn :</span></div>
+                                <div class="float-right">#@Model.OrderId</div>
+                            </div>
+
+                            @if (Model.OrderDate !=null )
+                            {
+                                if(Model.PaymentId == 1 && Model.TransactStatusId == 16)
+                                {
+                                     <div class="text-dark text-uppercase d-inline-block">
+                                        <span class="font-weight-semibold text-dark">Ngày đặt :</span>
+                                    </div>
+                                    <div class="float-right">@Model.OrderDate.Value.ToString("dd/MM/yyyy")</div>
+                                    <div class="text-dark text-uppercase d-inline-block">
+                                        <span class="font-weight-semibold text-dark">Trạng thái :</span>
+                                    </div>
+                                    <div class="float-right">Đã thannh toán</div>
+                                }
+                                else if (Model.PaymentId == 2 || Model.PaymentId == 3 )
+                                {
+                                     <div class="text-dark text-uppercase d-inline-block">
+                                        <span class="font-weight-semibold text-dark">Ngày đặt :</span>
+                                    </div>
+                                    <div class="float-right">@Model.OrderDate.Value.ToString("dd/MM/yyyy")</div>
+                                    <div class="text-dark text-uppercase d-inline-block">
+                                        <span class="font-weight-semibold text-dark">Trạng thái :</span>
+                                    </div>
+                                    <div class="float-right">Đã thannh toán</div>
+                                }
+                            }
+                            else
+                            {
+                                     <div class="text-dark text-uppercase d-inline-block">
+                                        <span class="font-weight-semibold text-dark">Ngày đặt :</span>
+                                    </div>
+                                    <div class="float-right">@Model.OrderDate.Value.ToString("dd/MM/yyyy")</div>
+                                    <div class="text-dark text-uppercase d-inline-block">
+                                        <span class="font-weight-semibold text-dark">Trạng thái :</span>
+                                    </div>
+                                    <div class="float-right"></div>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="m-t-20">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th>Giá</th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(orderDetails !=null && orderDetails.Count() >0)
+                                    {
+                                         var rowNumber = 1; 
+                                        @foreach (var item in orderDetails)
+                                        {
+                                             <tr>
+                                                <th>@rowNumber</th>
+                                                <td>@item.Product.ProductName</td>
+                                                <td>@item.Amount</td>
+                                                <td>@item.Price</td>
+                                                   @{
+                                                        var total = @item.Amount * @item.Price;
+                                                    }
+                                                <td>@total.Value.ToString("#,##0") VNĐ</td>
+                                            </tr>
+                                             rowNumber ++; 
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row m-t-30 lh-1-8">
+                            <div class="col-sm-12">
+                                <div class="float-right text-right">
+                                    <p>Tổng tiền: @Model.TotalMoney.ToString("#,##0") VNĐ </p>
+                                    <hr>
+                                    <h3><span class="font-weight-semibold text-dark">Tổng tiền thanh toán :</span>  @Model.TotalMoney.ToString("#,##0") VNĐ</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-v-20">
+                            <div class="col-sm-6">
+                                <img class="img-fluid text-opacity m-t-5" width="100" src="assets/images/logo/logo.png" alt="">
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <small><span class="font-weight-semibold text-dark"> SĐT:</span> (123) 456-7890</small>
+                                <br>
+                                <small>support@harmic.com</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Content Wrapper END -->
